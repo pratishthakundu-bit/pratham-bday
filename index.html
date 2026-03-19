@@ -1,360 +1,913 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>For Pratham | The Legend's Audit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Sniglet:wght@400;800&family=Grand+Hotel&family=Fredoka:wght@400;500&family=Patrick+Hand&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #FDF6E3;
-            --blue: #2A5282;
-            --red: #CD5C5C;
-            --green: #87A96B;
-            --dark: #333;
-            --safe-area-top: env(safe-area-inset-top);
-            --safe-area-bottom: env(safe-area-inset-bottom);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>🎂 Life Audit: Pratham Kundu</title>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; 
-            touch-action: manipulation;
-        }
+<style>
+/* ─── RESET & ROOT ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
 
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            font-family: 'Fredoka', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(var(--green) 1px, transparent 1px), 
-                              radial-gradient(var(--red) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            overflow: hidden; /* Fixes mobile bounce */
-            color: var(--dark);
-        }
+:root {
+  --sun:      #FFB703;
+  --orange:   #FB8500;
+  --sky:      #1A8CB5;
+  --mint:     #44A87D;
+  --rose:     #E03A47;
+  --cream:    #FFFBF0;
+  --warm:     #FFF3D4;
+  --white:    #FFFFFF;
+  --dark:     #2C2C2C;
+  --muted:    #777;
 
-        /* Smooth Hardware-Accelerated Sections */
-        .section {
-            display: none; 
-            width: 100%; 
-            height: 100%;
-            flex-direction: column; 
-            justify-content: space-between; 
-            align-items: center;
-            padding: calc(20px + var(--safe-area-top)) 25px calc(30px + var(--safe-area-bottom)); 
-            text-align: center; 
-            position: absolute;
-            top: 0; left: 0; 
-            border: 10px solid var(--blue);
-            background: rgba(253, 246, 227, 0.96);
-            will-change: transform, opacity;
-        }
+  /* Safe-area insets for notched phones */
+  --sit: env(safe-area-inset-top,    0px);
+  --sib: env(safe-area-inset-bottom, 0px);
+  --sil: env(safe-area-inset-left,   0px);
+  --sir: env(safe-area-inset-right,  0px);
+}
 
-        .active { display: flex; animation: mobileSlideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        @keyframes mobileSlideIn { 
-            from { opacity: 0; transform: translate3d(0, 30px, 0); } 
-            to { opacity: 1; transform: translate3d(0, 0, 0); } 
-        }
+html {
+  height: 100%;
+  overflow: hidden;
+}
 
-        h1 { font-family: 'Bubblegum Sans', cursive; font-size: clamp(2.2rem, 12vw, 4rem); color: var(--red); margin: 0; line-height: 1; }
-        h2 { font-family: 'Sniglet', cursive; font-size: clamp(1.4rem, 7vw, 2.4rem); color: var(--blue); font-weight: 400; margin: 10px 0; }
-        .handwritten { font-family: 'Patrick Hand', cursive; font-size: clamp(1.1rem, 5vw, 1.5rem); line-height: 1.4; }
-        .bday-note { font-family: 'Grand Hotel', cursive; font-size: clamp(1.7rem, 6vw, 2.3rem); color: #222; line-height: 1.25; }
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--cream);
+  /* CHANGED: Primary font is now Bubblegum Sans for a more humane feel */
+  font-family: 'Bubblegum Sans', cursive;
+  color: var(--dark);
+  position: relative;
+}
 
-        /* Responsive Image Handling */
-        .hero-img-box { position: relative; width: 100%; display: flex; justify-content: center; margin: 10px 0; }
-        .hero-img {
-            max-width: 85%;
-            height: auto;
-            max-height: 45vh; /* Prevents pushing buttons off-screen on small phones */
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            border-radius: 15px; 
-            border: 8px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+/* ─── DECORATIVE DOTTED BACKGROUND ───────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,183,3,0.35) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(224,58,71,0.2)  1px,   transparent 1px);
+  background-size: 28px 28px, 14px 14px;
+  background-position: 0 0, 7px 7px;
+  pointer-events: none; z-index: 0;
+  animation: bgDrift 60s linear infinite;
+}
+@keyframes bgDrift {
+  to { background-position: 280px 280px, 287px 287px; }
+}
 
-        /* Metrics Optimized for Thumbs */
-        .metrics-container {
-            width: 100%;
-            max-width: 500px;
-            background: white;
-            padding: 20px;
-            border-radius: 25px;
-            border: 3px solid var(--blue);
-            box-shadow: 6px 6px 0px var(--blue);
-            text-align: left;
-        }
-        .metric { margin-bottom: 12px; display: flex; flex-wrap: wrap; align-items: baseline; }
-        .label { font-family: 'Sniglet', cursive; color: var(--blue); font-size: 1.1rem; }
-        .value { font-family: 'Patrick Hand', cursive; color: var(--red); font-size: 1.5rem; margin-left: 8px; border-bottom: 2px dashed var(--green); }
+/* ─── FLOATING EMOJI BG ────────────────────────────── */
+#floaties {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+#floaties span {
+  position: absolute; font-size: 1.1rem; opacity: 0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(105vh) rotate(0deg);   opacity: 0; }
+  8%   { opacity: 0.18; }
+  92%  { opacity: 0.18; }
+  100% { transform: translateY(-8vh)  rotate(540deg); opacity: 0; }
+}
 
-        /* Tactical Mobile Buttons */
-        .btn {
-            background: var(--green); color: white; border: none; 
-            width: 90%; max-width: 300px;
-            padding: 18px 0;
-            font-family: 'Sniglet', cursive; font-size: 1.4rem; border-radius: 50px;
-            cursor: pointer; box-shadow: 0 6px 0 #4f6b3a; 
-            margin-top: 10px;
-            transition: transform 0.1s;
-        }
-        .btn:active { transform: scale(0.95) translateY(4px); box-shadow: 0 2px 0 #4f6b3a; }
+/* ─── SECTION SYSTEM ───────────────────────────────── */
+.section {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
-        /* Game Interactivity */
-        .choice-btn {
-            background: #fff; border: 3px solid var(--blue); padding: 12px 25px;
-            font-size: 1.3rem; border-radius: 18px; cursor: pointer; margin: 8px;
-            font-family: 'Patrick Hand', cursive; box-shadow: 4px 4px 0 var(--blue);
-        }
-        .choice-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0; }
+  /* Safe-area padding */
+  padding:
+    calc(var(--sit) + 24px)
+    calc(var(--sir) + 20px)
+    calc(var(--sib) + 20px)
+    calc(var(--sil) + 20px);
 
-        #moving-btn { position: absolute; background: var(--red); color: white; z-index: 100; }
+  background: rgba(255,251,240,0.97);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 
-        /* Final Scroll-Free Container */
-        .final-msg-card {
-            background: white; padding: 20px; border-radius: 20px; border: 3px solid var(--red);
-            width: 100%; text-align: left; box-shadow: 6px 6px 0 var(--blue);
-        }
+  /* Decorative border */
+  border: 5px solid var(--sun);
+  border-radius: 0;
+}
 
-        .confetti { position: absolute; width: 8px; height: 8px; z-index: 999; animation: fall linear infinite; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-    </style>
+.section.active {
+  display: flex;
+  animation: slideUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(32px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Scrollable inner wrapper so button always reachable */
+.inner {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 8px;
+  flex: 1;
+}
+
+/* ─── TYPOGRAPHY ────────────────────────────────────── */
+.bubble {
+  font-family: 'Bubblegum Sans', cursive;
+  line-height: 1.1;
+  color: var(--orange);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.07);
+}
+.h1  { font-size: clamp(2.2rem, 10vw, 3rem); }
+.h2  { font-size: clamp(1.5rem,  7vw, 2rem); color: var(--sky); }
+.h3  { font-size: clamp(1.2rem,  5.5vw, 1.5rem); }
+
+.hand {
+  font-family: 'Bubblegum Sans', cursive; /* Humane update */
+  font-size: clamp(1.1rem, 5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--dark);
+}
+.body-text {
+  font-family: 'Bubblegum Sans', cursive; /* Humane update */
+  font-size: clamp(1rem, 4.5vw, 1.2rem);
+  font-weight: normal;
+  line-height: 1.5;
+  color: var(--dark);
+}
+.muted { color: var(--muted); font-family: 'Bubblegum Sans', cursive; font-size: clamp(0.9rem, 4vw, 1.1rem); }
+
+/* ─── CARDS ─────────────────────────────────────────── */
+.card {
+  width: 100%;
+  background: var(--white);
+  border-radius: 22px;
+  padding: 20px 20px;
+  border: 3px solid var(--sun);
+  box-shadow: 5px 5px 0 var(--sun);
+  text-align: left;
+}
+.card.sky   { border-color: var(--sky);  box-shadow: 5px 5px 0 var(--sky); }
+.card.mint  { border-color: var(--mint); box-shadow: 5px 5px 0 var(--mint); }
+.card.rose  { border-color: var(--rose); box-shadow: 5px 5px 0 var(--rose); }
+
+/* ─── BUTTONS ────────────────────────────────────────── */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: clamp(1.2rem, 5.5vw, 1.5rem);
+  color: white;
+  background: var(--orange);
+  box-shadow: 0 6px 0 #b05e00, 0 8px 18px rgba(251,133,0,0.25);
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+  position: relative; top: 0;
+  letter-spacing: 0.3px;
+  text-align: center;
+  min-height: 58px;
+}
+.btn:active {
+  top: 4px;
+  box-shadow: 0 2px 0 #b05e00, 0 4px 8px rgba(251,133,0,0.2);
+  transform: scale(0.98);
+}
+.btn.sky  { background: var(--sky);  box-shadow: 0 6px 0 #0d6888; }
+.btn.mint { background: var(--mint); box-shadow: 0 6px 0 #2e7458; }
+.btn.gold { background: var(--sun);  color: #1a1400; box-shadow: 0 6px 0 #997300; }
+
+/* ─── CHOICE BUTTONS ─────────────────────────────────── */
+.choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; }
+.c-btn {
+  flex: 1; min-width: 120px;
+  padding: 15px 10px;
+  border: 3px solid var(--sky); background: white;
+  border-radius: 16px; font-family: 'Bubblegum Sans', cursive;
+  font-size: clamp(1.1rem, 5vw, 1.35rem);
+  color: var(--dark); cursor: pointer;
+  box-shadow: 3px 3px 0 var(--sky);
+  transition: transform 0.12s, box-shadow 0.12s, background 0.15s;
+  min-height: 52px;
+}
+.c-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--sky); }
+
+/* ─── PHOTO FRAME ────────────────────────────────────── */
+.photo-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.photo-frame {
+  position: relative;
+  display: inline-block;
+}
+.photo-frame img {
+  display: block;
+  width: min(72vw, 280px);
+  height: min(54vw, 210px);
+  object-fit: cover;
+  border-radius: 18px;
+  border: 5px solid white;
+  box-shadow: 8px 8px 0 var(--sun), 0 14px 40px rgba(0,0,0,0.13);
+}
+.photo-frame.tall img {
+  width:  min(68vw, 260px);
+  height: min(88vw, 340px);
+}
+.sticker {
+  position: absolute; bottom: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--rose); color: white;
+  font-family: 'Bubblegum Sans', cursive; font-size: 0.88rem;
+  padding: 4px 16px; border-radius: 20px; white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(224,58,71,0.3);
+}
+.sticker.sky  { background: var(--sky); }
+.sticker.mint { background: var(--mint); }
+
+/* ─── SECTION HEADER BAR ─────────────────────────────── */
+.sec-tag {
+  display: inline-block;
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.85rem; font-weight: normal;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 30px;
+  background: var(--warm); color: var(--orange);
+  border: 2px solid var(--sun);
+}
+
+/* ─── METRIC ROWS ────────────────────────────────────── */
+.metric {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 11px 0; border-bottom: 2px dashed rgba(26,140,181,0.2);
+  gap: 8px; flex-wrap: wrap;
+}
+.metric:last-child { border-bottom: none; }
+.m-l { font-family: 'Bubblegum Sans', cursive; font-size: clamp(1rem,4.2vw,1.15rem); color: var(--sky); flex-shrink: 0; }
+.m-v { font-family: 'Bubblegum Sans', cursive; font-size: clamp(1rem,4.8vw,1.25rem); color: var(--rose); text-align: right; }
+
+.status-banner {
+  margin-top: 14px; padding: 12px 16px; border-radius: 14px;
+  background: linear-gradient(90deg, var(--orange), var(--rose));
+  color: white; font-family: 'Bubblegum Sans', cursive;
+  font-size: clamp(0.9rem, 4vw, 1.05rem);
+  box-shadow: 0 5px 16px rgba(251,133,0,0.25);
+}
+
+/* ─── FUTURE CARDS ───────────────────────────────────── */
+.f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.f-card {
+  background: white; border-radius: 14px; padding: 13px 14px;
+  border-left: 4px solid var(--sun); box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+.f-label { font-family: 'Bubblegum Sans', cursive; font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.f-val   { font-family: 'Bubblegum Sans', cursive; font-size: clamp(1rem, 4.5vw, 1.2rem); color: var(--dark); line-height: 1.25; }
+
+/* ─── TERMINAL ───────────────────────────────────────── */
+.terminal {
+  width: 100%;
+  background: #12121e;
+  border-radius: 16px;
+  padding: 18px 18px 14px;
+  font-family: 'Courier New', monospace;
+  color: #00e87a;
+  font-size: clamp(0.82rem, 3.8vw, 1rem);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+}
+.t-bar { display: flex; gap: 7px; margin-bottom: 14px; align-items: center; }
+.t-dot { width: 11px; height: 11px; border-radius: 50%; }
+.t-dot.r{background:#ff5f57}.t-dot.y{background:#ffbd2e}.t-dot.g{background:#28c840}
+.t-line { line-height: 1.8; opacity: 0; transition: opacity 0.35s; }
+.t-line.show { opacity: 1; }
+.cursor::after { content:'█'; animation: cur 1s step-end infinite; }
+@keyframes cur { 50%{opacity:0} }
+
+/* ─── NAME INPUT ─────────────────────────────────────── */
+#name-input {
+  width: 100%; padding: 16px 20px;
+  font-family: 'Bubblegum Sans', cursive;
+  border: 3px solid var(--sky); border-radius: 50px;
+  background: white; outline: none; text-align: center;
+  box-shadow: 0 3px 12px rgba(26,140,181,0.12);
+  font-size: max(16px, clamp(1rem, 4.5vw, 1.2rem));
+}
+
+#denied-msg {
+  display: none; padding: 12px 18px;
+  background: #FFE8EA; border: 2px solid var(--rose); border-radius: 14px;
+  font-family: 'Bubblegum Sans', cursive; font-size: clamp(0.9rem,4vw,1.05rem);
+  color: var(--rose); animation: shk 0.4s ease;
+}
+
+/* ─── ID CARD ────────────────────────────────────────── */
+.id-card {
+  display: none; width: 100%;
+  background: white; border: 4px dashed var(--mint); border-radius: 22px;
+  padding: 22px 20px; text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+  animation: popIn 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+.badge { display:inline-block; background:var(--mint); color:white; font-family:'Bubblegum Sans',cursive; padding:4px 16px; border-radius:30px; font-size:0.78rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+.dyn-line { font-family:'Bubblegum Sans',cursive; font-size:clamp(1.1rem,5vw,1.35rem); color:var(--sky); min-height:1.9rem; transition:opacity 0.3s; }
+
+/* ─── ALIAS LIST ─────────────────────────────────────── */
+.alias-list { list-style:none; width:100%; }
+.alias-list li {
+  font-family:'Bubblegum Sans',cursive; font-size:clamp(1.2rem,5.5vw,1.5rem);
+  padding: 8px 0; display:flex; align-items:center; gap:10px;
+  border-bottom: 2px dashed rgba(255,183,3,0.3);
+}
+
+/* ─── GAME ───────────────────────────────────────────── */
+#game-q { font-family:'Bubblegum Sans',cursive; font-size:clamp(1.15rem,5.5vw,1.5rem); color:var(--dark); text-align:center; }
+#game-feed {
+  font-family:'Bubblegum Sans',cursive; font-size:clamp(1.1rem,5vw,1.35rem);
+  color:var(--mint); text-align:center; min-height:1.8rem;
+}
+#game-feed.bad { color:var(--rose); animation: shk 0.4s ease; }
+
+.q-dots { display:flex; gap:8px; }
+.q-dot { width:10px; height:10px; border-radius:50%; background:#ddd; transition:background 0.3s; }
+.q-dot.done { background:var(--mint); }
+.q-dot.now  { background:var(--sun); transform:scale(1.2); }
+
+.result-box {
+  background: linear-gradient(135deg, #FFFBE6, white);
+  border: 3px solid var(--sun); border-radius: 16px; padding: 18px 18px;
+  width: 100%; text-align:center;
+}
+.r-row { margin-bottom:8px; display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:6px; }
+.r-l { font-family:'Bubblegum Sans',cursive; font-size:clamp(0.9rem,4vw,1.05rem); color:var(--sky); }
+.r-v { font-family:'Bubblegum Sans',cursive; font-size:clamp(1.1rem,5vw,1.3rem); color:var(--rose); }
+
+/* ─── MOVING BTN CONTAINER ───────────────────────────── */
+#move-zone {
+  position: relative; width:100%; height:160px;
+  display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px;
+}
+#moving-btn {
+  position: absolute;
+  background: var(--rose); color: white; border: none;
+  padding: 14px 22px; border-radius: 16px;
+  font-family: 'Bubblegum Sans', cursive; font-size: clamp(1.1rem,5vw,1.3rem);
+  cursor: pointer; box-shadow: 3px 3px 0 #8c1a24;
+  transition: left 0.35s cubic-bezier(0.22,1,0.36,1), top 0.35s cubic-bezier(0.22,1,0.36,1);
+  z-index: 10; min-height: 52px;
+}
+#static-pratishtha {
+  position: static;
+  background: white; border: 3px solid var(--sky); color: var(--dark);
+  padding: 14px 22px; border-radius: 16px;
+  font-family: 'Bubblegum Sans', cursive; font-size: clamp(1.1rem,5vw,1.3rem);
+  cursor: pointer; box-shadow: 3px 3px 0 var(--sky);
+  min-height: 52px;
+}
+
+/* ─── UNLOCK SECTION ─────────────────────────────────── */
+.lock-anim { font-size: 4.5rem; display:block; animation: lockRock 2s ease-in-out infinite; }
+
+/* ─── GRANTED ────────────────────────────────────────── */
+#sec-granted {
+  background: radial-gradient(circle at 50% 40%, #44A87D, #1d6b4a);
+  border-color: white; z-index: 10;
+}
+.pulse-orb {
+  width: 150px; height: 150px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center;
+  font-size: 4rem; animation: orbPulse 1.5s ease-in-out infinite;
+}
+
+/* ─── BDAY NOTE ──────────────────────────────────────── */
+.bday-heading {
+  font-family:'Bubblegum Sans',cursive;
+  font-size: clamp(2.2rem,11vw,3.2rem);
+  background: linear-gradient(130deg, var(--orange), var(--rose));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1.1;
+}
+.bday-msg { font-family:'Bubblegum Sans',cursive; font-size:clamp(1.1rem,5vw,1.3rem); line-height:1.75; color:var(--dark); }
+.love-line {
+  font-family:'Bubblegum Sans',cursive; font-size:clamp(1.4rem,6vw,1.8rem);
+  color:var(--rose); display:flex; align-items:center; gap:6px; margin-top:10px;
+}
+
+/* ─── VERDICT ────────────────────────────────────────── */
+.verdict-title { font-family:'Bubblegum Sans',cursive; font-size:clamp(1.5rem,7vw,2.2rem); color:var(--sun); text-align:center; }
+.v-paper { background:white; border-radius:18px; padding:20px 18px; width:100%; box-shadow:0 14px 50px rgba(0,0,0,0.3); position:relative; overflow:hidden; }
+.v-item { display:flex; align-items:flex-start; gap:12px; padding:14px 0; border-bottom:2px dashed rgba(26,140,181,0.15); }
+.v-text { font-family:'Bubblegum Sans',cursive; font-size:clamp(1rem,4.2vw,1.2rem); color:var(--dark); padding-top:2px; }
+
+/* ─── CONFETTI ───────────────────────────────────────── */
+.cf {
+  position: fixed; top:-15px; pointer-events:none; z-index:9999; border-radius:3px;
+  animation: cfFall linear forwards;
+}
+
+.progress-bar {
+  display: flex; gap: 6px; justify-content: center;
+  padding: 2px 0 4px;
+  width: 100%;
+}
+.p-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,183,3,0.25); transition: background 0.3s, transform 0.3s; }
+.p-dot.on { background: var(--sun); transform: scale(1.3); }
+</style>
 </head>
 <body>
 
-    <audio id="bday-song" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div id="floaties"></div>
 
-    <section id="sec1" class="section active">
-        <div id="init-text">
-            <h1>Initializing...</h1>
-            <p class="handwritten">Checking for legend status...</p>
+<audio id="bday-audio" loop preload="none">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section id="sec1" class="section active">
+  <div class="inner">
+    <div class="progress-bar" id="prog"></div>
+
+    <div style="text-align:center; padding-top:4px;">
+      <div style="font-size:2.8rem; margin-bottom:4px;">🎯</div>
+      <h1 class="bubble h1">KUNDU FAMILY<br>DATABASE</h1>
+      <p class="muted" style="margin-top:4px;">Highly Classified. Do Not Share.</p>
+    </div>
+
+    <div class="terminal" id="terminal-box">
+      <div class="t-bar">
+        <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
+        <span>kundu_db.sh</span>
+      </div>
+      <div id="t1" class="t-line">$ Initializing KUNDU Family Database... <span style="color:#ffbd2e">✓</span></div>
+      <div id="t2" class="t-line">$ Scanning records... <span style="color:#ffbd2e">✓</span></div>
+      <div id="t3" class="t-line">$ Checking identity... <span style="color:#ffbd2e">✓</span></div>
+      <div id="t4" class="t-line">$ Verifying legend status... <span style="color:#ffbd2e">✓</span></div>
+      <div id="t5" class="t-line">$ Access restricted. <span class="cursor"></span></div>
+    </div>
+
+    <div id="login-zone" style="display:none; width:100%;">
+      <div class="card sky" style="text-align:center;">
+        <p class="bubble h3" style="color:var(--sky); margin-bottom:10px;">🧐 Who goes there?</p>
+        <p class="muted" style="margin-bottom:14px; font-size:clamp(0.88rem,4vw,1rem);">Enter your name to access this database</p>
+        <div class="name-row">
+          <input type="text" id="name-input" placeholder="Type your name here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" />
+          <button class="btn" onclick="checkIdentity()">Verify Me ➔</button>
         </div>
-        <div id="login-zone" style="display:none;">
-            <h2>Who are you? 🧐</h2>
-            <input type="text" id="name-input" placeholder="Enter name..." style="padding:15px; font-size:1.3rem; border-radius:15px; border:3px solid var(--blue); text-align:center; background: white; outline: none; width: 100%; max-width: 250px;">
-            <br><button class="btn" onclick="checkIdentity()">Verify Me!</button>
-            <p id="denied" style="color:var(--red); display:none; font-weight:bold; margin-top:15px;">Access Denied. You are not the main character! 🤡</p>
-        </div>
-        <div id="id-card" style="display:none; background: white; padding: 25px; border-radius: 25px; border: 5px dashed var(--green); width: 100%; box-shadow: 8px 8px 0 var(--green);">
-            <h1 style="color:var(--green)">Identity Confirmed</h1>
-            <h2 style="font-family:'Patrick Hand';">Subject: <span style="color:var(--red)">Pratham Kundu</span></h2>
-            <p class="handwritten">Status: <strong>Accepted Family member (tujhe uthake nhi laaye the)</strong></p>
-            <p id="dynamic-lines" style="color:var(--blue); font-size: 1.1rem; font-weight:bold;"></p>
-        </div>
-    </section>
+        <div id="denied-msg" style="margin-top:12px;">🚫 Access Denied. You are not the main character! 🤡</div>
+      </div>
+    </div>
 
-    <section id="sec2" class="section">
-        <h1>Subject Detected</h1>
-        <div class="hero-img-box"><img src="photo1.jpg" class="hero-img"></div>
-        <div style="text-align: center;">
-            <h2>The Legend Has Entered</h2>
-            <p class="handwritten">✨ Overachiever | ✨ Occasional Annoyance | ✨ Family Favorite</p>
-        </div>
-        <button class="btn" onclick="showNext('sec2', 'sec3')">Begin Audit ➔</button>
-    </section>
+    <div class="id-card" id="id-card">
+      <div class="badge">✅ Identity Confirmed</div>
+      <h2 class="bubble h2" style="color:var(--mint); margin:6px 0;">Pratham Kundu</h2>
+      <p class="hand" style="color:#555; margin-bottom:4px;">Status: <strong style="color:var(--rose)">Accepted Family Member</strong></p>
+      <p class="muted" style="margin-bottom:14px; font-size:clamp(0.85rem,3.8vw,1rem);">(tujhe uthake nhi laaye the 😂)</p>
+      <div class="dyn-line" id="dyn-line"></div>
+      <div id="proceed-wrap" style="display:none; margin-top:16px;">
+        <button class="btn mint" onclick="goTo('sec1','sec2')">Enter the Audit ✨</button>
+      </div>
+    </div>
 
-    <section id="sec3" class="section">
-        <h1>Life Metrics 📈</h1>
-        <div class="metrics-container">
-            <div class="metric"><span class="label">Achievement:</span> <span class="value">Extremely High</span></div>
-            <div class="metric"><span class="label">Ego Level:</span> <span class="value">Under observation</span></div>
-            <div class="metric"><span class="label">Annoying:</span> <span class="value">Needs control 😂</span></div>
-            <div class="metric"><span class="label">Intelligence:</span> <span class="value">High (Below me)</span></div>
-            <div class="metric"><span class="label">Importance:</span> <span class="value">Infinite ❤️</span></div>
-            <div class="metric"><span class="label">Gym:</span> <span class="value">Impressive</span></div>
-        </div>
-        <button class="btn" onclick="showNext('sec3', 'sec4')">View Proof ➔</button>
-    </section>
+    <div class="pb"></div>
+  </div>
+</section>
 
-    <section id="sec4" class="section">
-        <h1>Strength Check</h1>
-        <div class="hero-img-box"><img src="photo2.jpg" class="hero-img"></div>
-        <div class="metrics-container" style="border-color: var(--red); box-shadow: 6px 6px 0 var(--red);">
-            <div class="metric"><span class="label">Muscles:</span> <span class="value">Approved ✅</span></div>
-            <div class="metric"><span class="label">Humility:</span> <span class="value">Still Loading...</span></div>
-            <div class="metric"><span class="label">Confidence:</span> <span class="value">Too High</span></div>
-        </div>
-        <button class="btn" onclick="showNext('sec4', 'sec5')">Continue ➔</button>
-    </section>
+<section id="sec2" class="section">
+  <div class="inner">
+    <div class="progress-bar" id="prog2"></div>
 
-    <section id="sec5" class="section">
-        <h1>Sochne layak sawal 🤔</h1>
-        <div style="background: white; padding: 20px; border-radius: 25px; border: 4px dashed var(--blue); width: 100%;">
-            <p id="game-q" class="handwritten" style="color: var(--blue); margin: 0;"></p>
-            <div id="game-options" style="position: relative; width: 100%; min-height: 200px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;"></div>
-            <h2 id="game-feed" style="font-family: 'Sniglet'; color: var(--red); font-size: 1.2rem;"></h2>
-        </div>
-        <div id="game-footer"></div>
-    </section>
+    <div style="text-align:center;">
+      <p class="muted" style="font-size:clamp(0.78rem,3.5vw,0.9rem); letter-spacing:2px; text-transform:uppercase; font-weight:800; color:var(--sky);">📡 Subject Detected</p>
+      <h1 class="bubble h1" style="margin-top:4px;">The Legend<br>Has Entered</h1>
+    </div>
 
-    <section id="sec6" class="section">
-        <h1>Future Simulation 🔮</h1>
-        <div class="metrics-container">
-            <div class="metric"><span class="label">Career:</span> <span class="value">Very High</span></div>
-            <div class="metric"><span class="label">Happiness:</span> <span class="value">Sab Khushiyan mile tujhe</span></div>
-            <div class="metric"><span class="label">Bank:</span> <span class="value">Bohot zada! 😈</span></div>
-            <div class="metric"><span class="label">Marriage:</span> <span class="value">A beautiful wife detected 😏</span></div>
-            <div class="metric"><span class="label">Bond:</span> <span class="value">Strong and permanent</span></div>
-        </div>
-        <button class="btn" onclick="showNext('sec6', 'sec7')">Unlock Secret ➔</button>
-    </section>
+    <div class="photo-wrap">
+      <div class="photo-frame tall">
+        <img src="photo1.jpg" alt="Pratham">
+        <div class="sticker">Subject #001</div>
+      </div>
+    </div>
 
-    <section id="sec7" class="section">
-        <h1>Final Message Locked 🔒</h1>
-        <h2>Only true brother can unlock this 😂</h2>
-        <div style="height: 100px;"></div>
-        <button class="btn" id="unlock-btn" onclick="handleUnlock()">UNLOCK</button>
-    </section>
+    <div class="card" style="text-align:center; padding:16px 18px;">
+      <p class="muted" style="font-size:clamp(0.8rem,3.5vw,0.95rem); margin-bottom:8px; font-weight:700;">Also known as:</p>
+      <ul class="alias-list">
+        <li>Overachiever</li>
+        <li>Occasional Annoyance</li>
+        <li>Family Favorite</li>
+      </ul>
+    </div>
 
-    <section id="sec-granted" class="section" style="background: var(--green); border-color: white;">
-        <h1 style="color:white;">ACCESS GRANTED</h1>
-        <div style="height: 50px;"></div>
-        <p class="handwritten" style="color:white;">Wiping off your tears of joy...</p>
-    </section>
+    <button class="btn" onclick="goTo('sec2','sec3')">Begin Life Audit 🔬</button>
+    <div class="pb"></div>
+  </div>
+</section>
 
-    <section id="sec8" class="section">
-        <h1>Happy Birthday Pratham! 🎂</h1>
-        <div class="hero-img-box"><img src="photo3.jpg" class="hero-img" style="max-height: 30vh;"></div>
-        <div class="final-msg-card">
-            <div class="bday-note">
-                <p style="margin: 0 0 10px 0;">Wishing you a very happy birthday from all of us.</p>
-                <p style="margin: 0 0 10px 0;">You've always been an overachiever, but more importantly, someone we are proud of and who truly cares.</p>
-                <p style="margin: 0;">May you achieve all the success and happiness you deserve. We truly love you. ❤️</p>
-            </div>
-        </div>
-        <div style="height: 10px;"></div>
-    </section>
+<section id="sec3" class="section">
+  <div class="inner">
+    <div class="progress-bar"></div>
 
-    <script>
-        // Start sequence
-        setTimeout(() => {
-            document.getElementById('init-text').innerHTML = "<h1>Checking records...</h1><p class='handwritten'>Searching for brain cells...</p>";
-            setTimeout(() => {
-                document.getElementById('init-text').style.display = 'none';
-                document.getElementById('login-zone').style.display = 'block';
-            }, 1200);
-        }, 1200);
+    <div style="text-align:center;">
+      <div style="font-size:2rem;">📊</div>
+      <h1 class="bubble h1" style="font-size:clamp(1.9rem,9vw,2.8rem);">Life Performance<br>Metrics</h1>
+      <p class="muted" style="font-size:clamp(0.8rem,3.5vw,0.95rem); margin-top:2px;">Official Audit Report — Classified</p>
+    </div>
 
-        function checkIdentity() {
-            const val = document.getElementById('name-input').value.toLowerCase().trim();
-            if(val === "pratham" || val === "pratham kundu") {
-                document.getElementById('login-zone').style.display = 'none';
-                document.getElementById('id-card').style.display = 'block';
-                const dLines = ["Analyzing childhood chaos...", "Measuring ego levels...", "Counting achievements...", "Verifying sibling loyalty..."];
-                let i = 0;
-                const interval = setInterval(() => {
-                    if(i < dLines.length) {
-                        document.getElementById('dynamic-lines').innerText = dLines[i];
-                        i++;
-                    } else {
-                        clearInterval(interval);
-                        const b = document.createElement('button'); b.className = "btn"; b.innerText = "Enter Audit ➔";
-                        b.onclick = () => showNext('sec1', 'sec2');
-                        document.getElementById('id-card').appendChild(b);
-                    }
-                }, 1000);
-            } else {
-                document.getElementById('denied').style.display = 'block';
-            }
-        }
+    <div class="card sky">
+      <div class="metric"><span class="m-l">Achievement Level</span><span class="m-v">Extremely High (borderline unfair)</span></div>
+      <div class="metric"><span class="m-l">Ego Level</span><span class="m-v">Under observation 👀</span></div>
+      <div class="metric"><span class="m-l">Annoying Level</span><span class="m-v">Needs serious control 😂</span></div>
+      <div class="metric"><span class="m-l">Intelligence</span><span class="m-v">High (but still below me hehe)</span></div>
+      <div class="metric"><span class="m-l">Family Importance</span><span class="m-v">Unlimited / Infinite ❤️</span></div>
+      <div class="metric"><span class="m-l">Gym Progress</span><span class="m-v">Impressive. Very impressive.</span></div>
+      <div class="status-banner">⚠️ STATUS: Showing off detected. Monitoring in progress.</div>
+    </div>
 
-        function showNext(c, n) {
-            document.getElementById(c).classList.remove('active');
-            document.getElementById(n).classList.add('active');
-            if(n === 'sec5') startStep(1);
-        }
+    <button class="btn sky" onclick="goTo('sec3','sec4')">View Proof ➔</button>
+    <div class="pb"></div>
+  </div>
+</section>
 
-        function startStep(s) {
-            const area = document.getElementById('game-options');
-            const q = document.getElementById('game-q');
-            const feed = document.getElementById('game-feed');
-            area.innerHTML = ""; feed.innerText = "";
+<section id="sec4" class="section">
+  <div class="inner">
+    <div class="progress-bar"></div>
 
-            if(s === 1) {
-                q.innerText = "Who do you love the most?";
-                ["Mom", "Dad", "Me"].forEach(o => {
-                    const b = document.createElement('button'); b.className="choice-btn"; b.innerText=o;
-                    b.onclick = () => {
-                        if(o === 'Me') { feed.innerText = "Ye diya na sahi jawab"; setTimeout(()=>startStep(2), 1500); }
-                        else feed.innerText = "Dobara soch le";
-                    };
-                    area.appendChild(b);
-                });
-            } else if(s === 2) {
-                q.innerText = "Who is smarter?";
-                ["Pratishtha", "Pratham"].forEach(o => {
-                    const b = document.createElement('button'); b.className="choice-btn"; b.innerText=o;
-                    b.onclick = () => {
-                        if(o === 'Pratishtha') { feed.innerText = "Finally, some honesty."; setTimeout(()=>startStep(3), 1500); }
-                        else feed.innerText = "Overconfidence detected. Try again.";
-                    };
-                    area.appendChild(b);
-                });
-            } else if(s === 3) {
-                q.innerText = "Sab kisko zada pyaar karte hain?";
-                const b1 = document.createElement('button'); b1.className="choice-btn"; b1.innerText="Pratham"; b1.id="moving-btn";
-                const b2 = document.createElement('button'); b2.className="choice-btn"; b2.innerText="Pratishtha";
-                
-                let moves = 0;
-                const move = (e) => {
-                    if(moves < 3) {
-                        e.preventDefault();
-                        const maxX = area.clientWidth - b1.clientWidth;
-                        const maxY = area.clientHeight - b1.clientHeight;
-                        b1.style.left = Math.random() * maxX + "px";
-                        b1.style.top = Math.random() * maxY + "px";
-                        moves++;
-                    } else {
-                        b1.style.position = "static"; feed.innerText = "Sach hai, tujhe hi karte hain";
-                        b1.onmouseover = null; b1.ontouchstart = null;
-                        b1.onclick = () => finishGame();
-                    }
-                };
-                b1.onmouseover = move; b1.ontouchstart = move;
-                b2.onclick = () => { feed.innerText = "Humble ban rha hai zada... 😔"; setTimeout(()=>finishGame(), 2000); };
-                area.appendChild(b1); area.appendChild(b2);
-            }
-        }
+    <div style="text-align:center;">
+      <p class="muted" style="font-size:clamp(0.78rem,3.5vw,0.9rem); letter-spacing:2px; text-transform:uppercase; font-weight:800; color:var(--mint);">💪 Strength Analysis Complete</p>
+      <h1 class="bubble h1" style="font-size:clamp(1.9rem,9vw,2.8rem); margin-top:4px;">Evidence<br>of Gym</h1>
+    </div>
 
-        function finishGame() {
-            document.getElementById('game-feed').innerText = ""; 
-            document.getElementById('game-q').innerHTML = `
-                <div class="metric"><span class="label">Result:</span> <span class="value">You barely passed</span></div>
-                <div class="metric"><span class="label">Status:</span> <span class="value">Acceptable Brother</span></div>
-                <div class="metric"><span class="label">Scope:</span> <span class="value">Always</span></div>`;
-            document.getElementById('game-options').innerHTML = `<button class="btn" onclick="showNext('sec5','sec6')">Proceed ➔</button>`;
-        }
+    <div class="photo-wrap">
+      <div class="photo-frame tall">
+        <img src="photo2.jpg" alt="Pratham gym">
+        <div class="sticker mint">Exhibit A</div>
+      </div>
+    </div>
 
-        let clicks = 0;
-        function handleUnlock() {
-            clicks++;
-            const btn = document.getElementById('unlock-btn');
-            if(clicks === 1) btn.innerText = "Try Harder";
-            else if(clicks === 2) btn.innerText = "aur zor lga";
-            else if(clicks === 3) {
-                showNext('sec7', 'sec-granted');
-                setTimeout(() => {
-                    showNext('sec-granted', 'sec8');
-                    document.getElementById('bday-song').play();
-                    startParty();
-                }, 1200);
-            }
-        }
+    <div class="card mint">
+      <div class="metric"><span class="m-l" style="color:var(--mint);">Muscles</span><span class="m-v">Approved ✅</span></div>
+      <div class="metric"><span class="m-l" style="color:var(--mint);">Humility</span><span class="m-v">Still Loading... ⏳</span></div>
+      <div class="metric"><span class="m-l" style="color:var(--mint);">Confidence</span><span class="m-v">Dangerously High 📈</span></div>
+    </div>
 
-        function startParty() {
-            for(let i=0; i<60; i++) {
-                const c = document.createElement('div');
-                c.className = 'confetti';
-                c.style.left = Math.random() * 100 + "vw";
-                c.style.backgroundColor = ["#CD5C5C", "#87A96B", "#F4D03F", "#2A5282"][Math.floor(Math.random()*4)];
-                c.style.animationDuration = (Math.random() * 2 + 2) + "s";
-                c.style.top = "-20px";
-                document.body.appendChild(c);
-            }
-        }
-    </script>
+    <button class="btn mint" onclick="goTo('sec4','sec5')">Continue Evaluation ➔</button>
+    <div class="pb"></div>
+  </div>
+</section>
+
+<section id="sec5" class="section">
+  <div class="inner">
+    <div class="progress-bar"></div>
+
+    <div style="text-align:center;">
+      <div style="font-size:2rem;">🤔</div>
+      <h1 class="bubble h1" style="font-size:clamp(1.8rem,8.5vw,2.6rem);">System Test</h1>
+      <p class="muted" style="font-size:clamp(0.88rem,4vw,1rem); font-weight:700;">How Good of a Brother Are You?</p>
+    </div>
+
+    <div class="card sky" style="gap:12px; display:flex; flex-direction:column; align-items:center;">
+      <div class="q-dots" id="q-dots">
+        <div class="q-dot now" id="d1"></div>
+        <div class="q-dot" id="d2"></div>
+        <div class="q-dot" id="d3"></div>
+      </div>
+      <p id="game-q" style="min-height:2.4rem;"></p>
+      <div class="choices" id="game-options"></div>
+      <div id="move-zone" style="display:none;"></div>
+      <p id="game-feed"></p>
+    </div>
+
+    <div class="pb"></div>
+  </div>
+</section>
+
+<section id="sec6" class="section">
+  <div class="inner">
+    <div class="progress-bar"></div>
+
+    <div style="text-align:center;">
+      <div style="font-size:2rem;">🔮</div>
+      <h1 class="bubble h1" style="font-size:clamp(1.8rem,8.5vw,2.6rem);">Running Future<br>Simulation...</h1>
+      <p class="muted" style="font-size:clamp(0.8rem,3.5vw,0.95rem);">Highly accurate. Mostly.</p>
+    </div>
+
+    <div class="f-grid">
+      <div class="f-card"><div class="f-label">🏆 Career Success</div><div class="f-val">Very High — as expected</div></div>
+      <div class="f-card" style="border-left-color:var(--sky);"><div class="f-label">😊 Happiness</div><div class="f-val">Sab Khushiyan mile tujhe</div></div>
+      <div class="f-card" style="border-left-color:var(--rose);"><div class="f-label">💰 Bank Balance</div><div class="f-val">Hopefully increasing — taki main kharch kar sakun 😈</div></div>
+      <div class="f-card" style="border-left-color:var(--mint);"><div class="f-label">💍 Marriage</div><div class="f-val">Beautiful wife detected 😏</div></div>
+      <div class="f-card" style="border-left-color:var(--orange);"><div class="f-label">🏋️ Fitness</div><div class="f-val">Gym consistency likely to continue</div></div>
+      <div class="f-card" style="border-left-color:var(--rose);"><div class="f-label">👫 Sibling Bond</div><div class="f-val">Strong & permanent. No escape.</div></div>
+    </div>
+
+    <button class="btn" onclick="goTo('sec6','sec7')">Unlock Final Message 🔐</button>
+    <div class="pb"></div>
+  </div>
+</section>
+
+<section id="sec7" class="section">
+  <div class="inner" style="justify-content:center; gap:20px;">
+    <span class="lock-anim">🔒</span>
+    <div style="text-align:center;">
+      <h1 class="bubble h1" style="color:var(--sun);">Final Message<br>Locked</h1>
+      <p class="hand" style="color:rgba(0,0,0,0.7); margin-top:8px;">Only true brother can unlock this<br><span style="font-size:1rem; color:rgba(0,0,0,0.5);">(so feel blessed 😂)</span></p>
+    </div>
+    <button class="btn gold" id="unlock-btn" onclick="handleUnlock()" style="margin-top:8px;">🔓 UNLOCK</button>
+    <div class="pb"></div>
+  </div>
+</section>
+
+<section id="sec-granted" class="section">
+  <div class="inner" style="justify-content:center; gap:20px;">
+    <div class="pulse-orb">✅</div>
+    <div style="text-align:center;">
+      <h1 class="bubble" style="font-size:clamp(2.5rem,11vw,4rem); color:white;">ACCESS<br>GRANTED</h1>
+      <p class="hand" style="color:rgba(255,255,255,0.8); margin-top:10px;">Wiping off your tears of joy...</p>
+    </div>
+  </div>
+</section>
+
+<section id="sec8" class="section">
+  <div class="inner">
+    <div style="text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:4px;">🎂</div>
+      <div class="bday-heading">Happy Birthday<br>Pratham!</div>
+    </div>
+
+    <div class="photo-wrap">
+      <div class="photo-frame">
+        <img src="photo3.jpg" alt="Pratham birthday">
+        <div class="sticker">The Legend 🎂</div>
+      </div>
+    </div>
+
+    <div class="card rose">
+      <div class="bday-msg">
+        <p>Wishing you a very happy birthday from all of us. 🎉</p>
+        <p>You have always been an overachiever, but more importantly, someone we are <strong>proud of</strong> — and someone who truly cares.</p>
+        <p>We wish you all the very best for your future. May you achieve all the success, happiness, and prosperity you deserve.</p>
+        <p>Thank you for being such an important part of our lives. We may not say it often, but we truly love you.</p>
+      </div>
+      <div class="love-line">Love you always <span class="hb">❤️</span></div>
+    </div>
+
+    <button class="btn sky" onclick="goTo('sec8','sec9')">See the Final Verdict 🏅</button>
+    <div class="pb"></div>
+  </div>
+</section>
+
+<section id="sec9" class="section">
+  <div class="inner" style="justify-content:center; gap:18px;">
+    <div class="verdict-title">🏅 You Are Officially Declared...</div>
+    <div class="v-paper">
+      <div class="v-item"><span class="v-ico">👑</span><span class="v-text">A good son</span></div>
+      <div class="v-item"><span class="v-ico">😄</span><span class="v-text">A very good brother — who is sometimes annoyingly annoying</span></div>
+      <div class="v-item"><span class="v-ico">❤️</span><span class="v-text">An important part and heart of this family</span></div>
+    </div>
+    <p class="hand" style="color:var(--sun); text-align:center; font-size:clamp(1.2rem,5.5vw,1.5rem);">Happy Birthday Bhai. We love you. Always. 🎉</p>
+    <div class="pb"></div>
+  </div>
+</section>
+
+<script>
+/* === Floating emojis === */
+(function(){
+  const emojis=['⭐','✨','🌟','💫','🎈','🎊','❤️','🎂','🥳','🎁'];
+  const c = document.getElementById('floaties');
+  for(let i=0;i<18;i++){
+    const s=document.createElement('span');
+    s.textContent=emojis[i%emojis.length];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(Math.random()*14+12)+'s';
+    s.style.animationDelay=(Math.random()*18)+'s';
+    c.appendChild(s);
+  }
+})();
+
+/* === Progress === */
+const SECTIONS = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7','sec8','sec9'];
+const TOTAL = SECTIONS.length;
+
+function renderProgress(secId) {
+  const idx = SECTIONS.indexOf(secId);
+  document.querySelectorAll('.progress-bar').forEach(bar => {
+    bar.innerHTML = '';
+    for(let i=0;i<TOTAL;i++){
+      const d=document.createElement('div');
+      d.className='p-dot'+(i===idx?' on':'');
+      bar.appendChild(d);
+    }
+  });
+}
+
+/* === Terminal === */
+(function(){
+  ['t1','t2','t3','t4','t5'].forEach((id,i)=>{
+    setTimeout(()=>{
+      const el=document.getElementById(id);
+      if(el) el.classList.add('show');
+      if(i===4) setTimeout(()=>{ document.getElementById('login-zone').style.display='block'; },600);
+    }, i*500+300);
+  });
+  renderProgress('sec1');
+})();
+
+/* === Identity === */
+function checkIdentity(){
+  const val=document.getElementById('name-input').value.toLowerCase().trim();
+  const denied=document.getElementById('denied-msg');
+  if(val.includes('pratham')){
+    denied.style.display='none';
+    document.getElementById('login-zone').style.display='none';
+    document.getElementById('id-card').style.display='block';
+    runDynLines();
+  } else {
+    denied.style.display='block';
+    denied.style.animation='none';
+    setTimeout(()=>{ denied.style.animation=''; },10);
+  }
+}
+
+function runDynLines(){
+  const msgs=['Analyzing childhood chaos...','Measuring ego levels...','Counting achievements...','Verifying sibling loyalty...'];
+  let i=0;
+  const el=document.getElementById('dyn-line');
+  const iv=setInterval(()=>{
+    el.style.opacity='0';
+    setTimeout(()=>{
+      el.textContent=msgs[i]||''; el.style.opacity='1'; i++;
+      if(i>=msgs.length){
+        clearInterval(iv);
+        setTimeout(()=>{
+          el.textContent='✅ All systems go. Welcome, legend.';
+          document.getElementById('proceed-wrap').style.display='block';
+        },900);
+      }
+    },300);
+  },1100);
+}
+
+/* === Navigation === */
+function goTo(from, to){
+  if(from) document.getElementById(from).classList.remove('active');
+  if(to) document.getElementById(to).classList.add('active');
+  renderProgress(to);
+  if(to==='sec5') startGame(1);
+}
+
+/* === GAME === */
+function setDots(step){
+  for(let i=1;i<=3;i++){
+    const d=document.getElementById('d'+i);
+    d.className='q-dot';
+    if(i<step) d.classList.add('done');
+    else if(i===step) d.classList.add('now');
+  }
+}
+function setFeed(msg, bad){
+  const f=document.getElementById('game-feed');
+  f.textContent=msg;
+  f.className=bad?'bad':'';
+}
+function clearGame(){
+  document.getElementById('game-options').innerHTML='';
+  document.getElementById('game-options').style.display='flex';
+  document.getElementById('move-zone').style.display='none';
+  document.getElementById('move-zone').innerHTML='';
+}
+
+function startGame(step){
+  setDots(step);
+  clearGame();
+  const qEl=document.getElementById('game-q');
+  const opts=document.getElementById('game-options');
+
+  function makeBtn(label, handler){
+    const b=document.createElement('button');
+    b.className='c-btn'; b.textContent=label;
+    b.onclick=handler;
+    return b;
+  }
+
+  if(step===1){
+    qEl.textContent='Q1: Who do you love the most?';
+    ['Mummy','Papa','Pratishtha'].forEach(o=>{
+      opts.appendChild(makeBtn(o,()=>{
+        if(o==='Me'){ setFeed('Ye diya na sahi jawab 😏',false); setTimeout(()=>startGame(2),1600); }
+        else setFeed('Dobara soch le... 🤦',true);
+      }));
+    });
+  } else if(step===2){
+    qEl.textContent='Q2: Who is smarter?';
+    ['Pratishtha','Pratham'].forEach(o=>{
+      opts.appendChild(makeBtn(o,()=>{
+        if(o==='Pratishtha'){ setFeed('Finally, some honesty. ✅',false); setTimeout(()=>startGame(3),1600); }
+        else setFeed('Overconfidence detected. Try again. 😤',true);
+      }));
+    });
+  } else if(step===3){
+    qEl.textContent='Q3: Sab kisko zada pyaar karte hain?';
+    opts.style.display='none';
+    const mz=document.getElementById('move-zone');
+    mz.style.display='flex';
+
+    const b1=document.createElement('button');
+    b1.id='moving-btn'; b1.textContent='Pratham';
+    b1.style.left='10px'; b1.style.top='55px';
+
+    const b2=document.createElement('button');
+    b2.id='static-pratishtha'; b2.textContent='Pratishtha';
+
+    let moves=0;
+    const mv=()=>{
+      if(moves<3){
+        const maxX=Math.max(20, mz.offsetWidth-130);
+        const maxY=Math.max(10, mz.offsetHeight-60);
+        b1.style.left=Math.random()*maxX+'px';
+        b1.style.top=Math.random()*maxY+'px';
+        moves++;
+      } else {
+        b1.style.position='static';
+        b1.onmouseenter=null; b1.ontouchstart=null;
+        b1.onclick=()=>{ setFeed('Sach hai, tujhe hi karte hain ❤️',false); setTimeout(showResult,2000); };
+        setFeed('Ab pakad le... 😏',false);
+      }
+    };
+    b1.onmouseenter=mv; b1.ontouchstart=mv;
+    b2.onclick=()=>{ setFeed('Humble ban rha hai zada... tujhe bhi pta hai 😔',false); setTimeout(showResult,2800); };
+    mz.appendChild(b1); mz.appendChild(b2);
+  }
+}
+
+function showResult(){
+  document.getElementById('game-q').textContent='';
+  document.getElementById('game-feed').textContent='';
+  const opts=document.getElementById('game-options');
+  opts.style.display='flex';
+  document.getElementById('move-zone').style.display='none';
+  opts.innerHTML=`
+    <div class="result-box">
+      <div class="r-row"><span class="r-l">Result:</span><span class="r-v">You barely passed 😅</span></div>
+      <div class="r-row"><span class="r-l">Status:</span><span class="r-v">Acceptable Brother</span></div>
+      <div class="r-row"><span class="r-l">Scope for improvement:</span><span class="r-v">Always 📈</span></div>
+      <button class="btn sky" onclick="goTo('sec5','sec6')" style="margin-top:14px;">Proceed to Future 🔮</button>
+    </div>`;
+}
+
+/* === Unlock === */
+let uc=0;
+function handleUnlock(){
+  uc++;
+  const b=document.getElementById('unlock-btn');
+  if(uc===1) b.textContent='😤 Try Harder...';
+  else if(uc===2) b.textContent='💪 Aur Zor Lga!';
+  else if(uc>=3){
+    goTo('sec7','sec-granted');
+    setTimeout(()=>{
+      goTo('sec-granted','sec8');
+      try{ document.getElementById('bday-audio').play(); } catch(e){}
+      confetti();
+    },1600);
+  }
+}
+
+/* === Confetti === */
+function confetti(){
+  const cols=['#FFB703','#FB8500','#1A8CB5','#44A87D','#E03A47'];
+  for(let i=0;i<100;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div'); c.className='cf';
+      c.style.left=Math.random()*100+'vw';
+      c.style.width='10px'; c.style.height='10px';
+      c.style.backgroundColor=cols[Math.floor(Math.random()*cols.length)];
+      c.style.animationDuration=(Math.random()*2+2)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4000);
+    },i*25);
+  }
+}
+</script>
 </body>
 </html>
